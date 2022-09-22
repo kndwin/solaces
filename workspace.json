@@ -1,5 +1,15 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "features-shortcuts": "libs/features/shortcuts",
+    "react-hooks": "libs/react/hooks",
+    "react-ui": "libs/react/ui",
+    "web-dixiejs": "apps/web-dixiejs",
+    "web-homebase": "apps/web-homebase",
+    "web-instantdb": "apps/web-instantdb",
+    "web-replicache": "apps/web-replicache",
+    "web-rxdb": "apps/web-rxdb",
+    "web-watermelondb": "apps/web-watermelondb"
+  }
 }

@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@solaces/features/shortcuts": ["libs/features/shortcuts/src/index.ts"],
+      "@solaces/react-ui": ["libs/react/ui/src/index.ts"],
+      "@solaces/react/hooks": ["libs/react/hooks/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
