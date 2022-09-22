@@ -4,6 +4,7 @@ import {
   forwardRef,
   useImperativeHandle,
   useRef,
+  Ref,
 } from 'react';
 import styled from '@emotion/styled';
 import {
@@ -21,29 +22,32 @@ import {
   useRemirrorContext,
   UseRemirrorReturn,
   UseRemirrorContextType,
+  ReactFrameworkOutput,
 } from '@remirror/react';
 import colors from 'tailwindcss/colors';
+import { EmptyShape, Extension } from 'remirror';
 
 type WysiwygEditorProps = {
   initialContent?: string;
   placeholder?: string;
   onChange?: (markdown: string) => void;
   onBlur?: (markdown: string) => void;
-	onFocus?: () => void; 
+  onFocus?: () => void;
   disableFocus?: boolean;
   disablePadding?: boolean;
 };
 
 const extensions = () => [
-  new BoldExtension(),
-  new ItalicExtension(),
-  new HeadingExtension(),
-  new CalloutExtension({ defaultType: 'warn' }),
-  new MarkdownExtension(),
-  new CodeBlockExtension(),
+  new BoldExtension({}),
+  new ItalicExtension({}),
+  new HeadingExtension({}),
+  // new CalloutExtension({ defaultType: 'warn' }),
+  new MarkdownExtension({}),
+  // new CodeBlockExtension(),
 ];
 
-type EditorRef = UseRemirrorContextType<MarkdownExtension>;
+// TODO(knd): Find correct typing
+type EditorRef = any;
 
 const ImperativeHandle = forwardRef((_: unknown, ref: Ref<EditorRef>) => {
   const mirror = useRemirrorContext({
@@ -69,7 +73,7 @@ export const WysiwygEditor = (props: WysiwygEditorProps) => {
     function initializeInitialMarkdownContent() {
       const text = props?.initialContent;
       if (Boolean(text)) {
-				editorRef.current!.setContent({ type: "doc", content: []});
+        editorRef.current!.setContent({ type: 'doc', content: [] });
         editorRef.current!.commands?.insertMarkdown(text);
       }
     },
@@ -96,20 +100,20 @@ export const WysiwygEditor = (props: WysiwygEditorProps) => {
         }}
       >
         <Remirror
-					onFocus={props.onFocus}
+          onFocus={props.onFocus}
           placeholder={props.placeholder}
           autoRender="start"
           state={state}
           onBlur={(parameter) => {
-						if (Boolean(props?.onBlur)) {
-							props?.onBlur(parameter.helpers.getMarkdown());
-						}
+            if (Boolean(props?.onBlur)) {
+              props?.onBlur(parameter.helpers.getMarkdown());
+            }
           }}
           manager={manager}
           onChange={(parameter) => {
-						if (Boolean(props?.onChange)) {
-							props?.onChange(parameter.helpers.getMarkdown());
-						}
+            if (Boolean(props?.onChange)) {
+              props?.onChange(parameter.helpers.getMarkdown());
+            }
             setState(parameter.state);
           }}
         >

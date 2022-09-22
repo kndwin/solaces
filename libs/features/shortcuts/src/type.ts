@@ -15,7 +15,9 @@ import { StateNames, TEvents} from '.'
 //
 export type StateTypes = typeof StateNames[number];
 
-type TContext = {};
+type TContext = {
+  page: 'dashboardPage' | 'postPage' | null;
+};
 
 type TStates = {
   states: Record<typeof StateNames[number], {}>;

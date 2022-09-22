@@ -369,7 +369,7 @@ const ContextMenuItem = styled(ContextMenuPrimitive.Item, {
   ),
   variants: {},
 });
-const ContextMenuSeperator = ContextMenuPrimitive.Seperator;
+const ContextMenuSeparator = ContextMenuPrimitive.Separator;
 const ContextMenuCheckboxItem = ContextMenuPrimitive.CheckboxItem;
 const ContextMenuItemIndicator = ContextMenuPrimitive.ItemIndicator;
 const ContextMenuLabel = ContextMenuPrimitive.Label;
@@ -379,7 +379,7 @@ export let ContextMenu = Object.assign(ContextMenuRoot, {
   Portal: ContextMenuPortal,
   Content: ContextMenuContent,
   Item: ContextMenuItem,
-  Seperator: ContextMenuSeperator,
+  Separator: ContextMenuSeparator,
   CheckboxItem: ContextMenuCheckboxItem,
   ItemIndicator: ContextMenuItemIndicator,
   Label: ContextMenuLabel,

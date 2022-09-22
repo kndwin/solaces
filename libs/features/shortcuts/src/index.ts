@@ -65,17 +65,10 @@ export type TEvents =
   | { type: 'CLOSE_POST' }
   | { type: 'CLOSE_NEW_ENTRY_DIALOG' };
 
-type TContext = {
-  page: 'dashboardPage' | 'postPage' | null;
-};
-
 const config: MachineConfigExtended = {
   id: 'keyboard-shortcuts',
   initial: 'pageLoad',
   predictableActionArguments: true,
-  schema: {
-    context: {} as TContext,
-  },
   context: {
     page: 'dashboardPage',
   },
