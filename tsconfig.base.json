@@ -15,8 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@solaces/features/post": ["libs/features/post/src/index.ts"],
       "@solaces/features/shortcuts": ["libs/features/shortcuts/src/index.ts"],
-      "@solaces/react-ui": ["libs/react/ui/src/index.ts"],
+      "@solaces/features/wysiwyg-editor": [
+        "libs/features/wysiwyg-editor/src/index.ts"
+      ],
+      "@solaces/react/ui": ["libs/react/ui/src/index.ts"],
       "@solaces/react/hooks": ["libs/react/hooks/src/index.ts"]
     }
   },

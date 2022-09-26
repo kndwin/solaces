@@ -9,7 +9,8 @@ import {
   useAlert,
   useToast,
   Box,
-} from '@solaces/react-ui';
+  ErrorFallback,
+} from '@solaces/react/ui';
 import { match } from 'ts-pattern';
 import {
   ShortcutContext,
@@ -22,19 +23,30 @@ import {
   HiX,
   HiInformationCircle,
 } from 'react-icons/hi';
+import { ErrorBoundary } from 'react-error-boundary';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+const queryClient = new QueryClient();
 
 export default function CustomApp({ Component, pageProps }: AppProps) {
   const shortcutService = useInterpret(shortcutMachine);
   return (
-    <Tooltip.Provider>
-      <Toast.Provider>
-        <ShortcutContext.Provider value={{ shortcutService }}>
-          <Component {...pageProps} />
-          <AlertDialogMessages />
-          <ToastMessages />
-        </ShortcutContext.Provider>
-      </Toast.Provider>
-    </Tooltip.Provider>
+    <ErrorBoundary
+      FallbackComponent={(props) => (
+        <ErrorFallback className="w-screen h-screen" {...props} />
+      )}
+    >
+      <Tooltip.Provider>
+        <Toast.Provider>
+          <ShortcutContext.Provider value={{ shortcutService }}>
+            <QueryClientProvider client={queryClient}>
+              <Component {...pageProps} />
+            </QueryClientProvider>
+            <AlertDialogMessages />
+            <ToastMessages />
+          </ShortcutContext.Provider>
+        </Toast.Provider>
+      </Tooltip.Provider>
+    </ErrorBoundary>
   );
 }
 

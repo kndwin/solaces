@@ -129,7 +129,7 @@ type ContainerProps = {
   disablePadding: boolean;
 };
 
-export const Container = styled.div<ContainerProps>((props) => ({
+const Container = styled.div<ContainerProps>((props) => ({
   '.remirror-editor-wrapper': {
     paddingTop: '0px',
   },

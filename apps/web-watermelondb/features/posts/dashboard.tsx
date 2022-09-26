@@ -7,18 +7,20 @@ import {
   Box,
   useAlert,
   ContextMenu,
-} from '@solaces/react-ui';
+} from '@solaces/react/ui';
 
 import {
   Shortcuts as s,
   State as xs,
   useShortcut,
+  useShortcutStateSelector,
 } from '@solaces/features/shortcuts';
 import { useKeyboardPress } from '@solaces/react/hooks';
 import { HiPlus, HiOutlineTrash } from 'react-icons/hi';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRxPosts, deleteOnePost } from '../../db';
+import { styled } from 'classname-variants/react';
 
 export const Posts = () => {
   const { posts } = useRxPosts();
@@ -30,6 +32,7 @@ export const Posts = () => {
   const setPostIds = usePostStore.use.setPostIds();
   const incrementFocusIndex = usePostStore.use.incrementFocusIndex();
   const decrementFocusIndex = usePostStore.use.decrementFocusIndex();
+  const isDashboardPage = useShortcutStateSelector('dashboardPage');
 
   useEffect(() => {
     const postIdsToSet = posts.map((p) => p.id);
@@ -56,25 +59,37 @@ export const Posts = () => {
   useKeyboardPress(
     {
       key: 'j',
-      onKeyDown: () => incrementFocusIndex(),
+      onKeyDown: () => {
+        if (isDashboardPage) {
+          incrementFocusIndex();
+        }
+      },
     },
-    []
+    [isDashboardPage]
   );
 
   useKeyboardPress(
     {
       key: 'k',
-      onKeyDown: () => decrementFocusIndex(),
+      onKeyDown: () => {
+        if (isDashboardPage) {
+          decrementFocusIndex();
+        }
+      },
     },
-    []
+    [isDashboardPage]
   );
 
   useKeyboardPress(
     {
       key: 'Delete',
-      onKeyDown: () => deletePostWithAlert(),
+      onKeyDown: () => {
+        if (isDashboardPage) {
+          deletePostWithAlert();
+        }
+      },
     },
-    []
+    [isDashboardPage]
   );
 
   return (

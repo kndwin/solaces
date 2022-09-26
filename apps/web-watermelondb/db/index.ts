@@ -54,7 +54,7 @@ export const createOnePost = async (post: TCreateOnePost) => {
   });
 };
 
-type TUpdateOnePost = TCreateOnePost & { id: string };
+export type TUpdateOnePost = TCreateOnePost & { id: string };
 export const updateOnePost = async (post: TUpdateOnePost) => {
   await database.write(async () => {
     const postToUpdate = await postsCollection.find(post.id);

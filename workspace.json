@@ -2,7 +2,9 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "features-post": "libs/features/post",
     "features-shortcuts": "libs/features/shortcuts",
+    "features-wysiwyg-editor": "libs/features/wysiwyg-editor",
     "react-hooks": "libs/react/hooks",
     "react-ui": "libs/react/ui",
     "web-dixiejs": "apps/web-dixiejs",

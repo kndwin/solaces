@@ -6,6 +6,11 @@ export const Text = styled('p', {
   variants: {},
 });
 
+export const Code = styled('pre', {
+  base: 'text-stone-100 leading-snug',
+  variants: {},
+});
+
 export const Kbd = styled('kbd', {
   base: cx(
     'bg-stone-500 text-stone-100 font-sans text-xs',
