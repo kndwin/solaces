@@ -7,7 +7,7 @@
     "features-wysiwyg-editor": "libs/features/wysiwyg-editor",
     "react-hooks": "libs/react/hooks",
     "react-ui": "libs/react/ui",
-    "web-dixiejs": "apps/web-dixiejs",
+    "web-dexiejs": "apps/web-dexiejs",
     "web-homebase": "apps/web-homebase",
     "web-instantdb": "apps/web-instantdb",
     "web-replicache": "apps/web-replicache",

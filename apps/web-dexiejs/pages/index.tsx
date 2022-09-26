@@ -15,7 +15,6 @@ import {
   LoadingSplashScreen,
   ErrorFallback,
 } from '@solaces/react/ui';
-
 import {
   Shortcuts as s,
   State as xs,
@@ -31,8 +30,7 @@ import {
   createOnePostZodSchema,
   deleteOnePost,
   useRxPosts,
-} from 'apps/web-dixiejs/db';
-import { db } from '../db';
+} from 'apps/web-dexiejs/db';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';

@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/web-dixiejs",
+  "sourceRoot": "apps/web-dexiejs",
   "projectType": "application",
   "targets": {
     "build": {
@@ -8,12 +8,12 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/web-dixiejs",
-        "outputPath": "dist/apps/web-dixiejs"
+        "root": "apps/web-dexiejs",
+        "outputPath": "dist/apps/web-dexiejs"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/web-dixiejs"
+          "outputPath": "apps/web-dexiejs"
         },
         "production": {}
       }
@@ -22,16 +22,16 @@
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "web-dixiejs:build",
+        "buildTarget": "web-dexiejs:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "web-dixiejs:build:development",
+          "buildTarget": "web-dexiejs:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "web-dixiejs:build:production",
+          "buildTarget": "web-dexiejs:build:production",
           "dev": false
         }
       }
@@ -39,14 +39,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "web-dixiejs:build:production"
+        "buildTarget": "web-dexiejs:build:production"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/web-dixiejs"],
+      "outputs": ["coverage/apps/web-dexiejs"],
       "options": {
-        "jestConfig": "apps/web-dixiejs/jest.config.ts",
+        "jestConfig": "apps/web-dexiejs/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -54,7 +54,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/web-dixiejs/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/web-dexiejs/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

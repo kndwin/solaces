@@ -20,8 +20,8 @@
       "@solaces/features/wysiwyg-editor": [
         "libs/features/wysiwyg-editor/src/index.ts"
       ],
-      "@solaces/react/ui": ["libs/react/ui/src/index.ts"],
-      "@solaces/react/hooks": ["libs/react/hooks/src/index.ts"]
+      "@solaces/react/hooks": ["libs/react/hooks/src/index.ts"],
+      "@solaces/react/ui": ["libs/react/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

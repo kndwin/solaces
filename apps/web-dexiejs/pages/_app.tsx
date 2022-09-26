@@ -1,4 +1,4 @@
-import 'apps/web-dixiejs/public/global.css';
+import 'apps/web-dexiejs/public/global.css';
 import 'remirror/styles/all.css';
 import { AppProps } from 'next/app';
 import {
