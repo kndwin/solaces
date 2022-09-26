@@ -19,11 +19,17 @@ import { useKeyboardPress } from '@solaces/react/hooks';
 import { HiPlus, HiOutlineTrash } from 'react-icons/hi';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useRxPosts, deleteOnePost } from '../../db';
-import { styled } from 'classname-variants/react';
+// import { useRxPosts, deleteOnePost } from '../../db';
+import { TPost } from './types';
 
-export const Posts = () => {
-  const { posts } = useRxPosts();
+export const PostsComponent = ({
+  posts,
+  deleteOnePost,
+}: {
+  posts: TPost[];
+  deleteOnePost: (id: string) => void;
+}) => {
+  // const { posts } = useRxPosts();
   const { send } = useShortcut();
 
   const focusIndex = usePostStore.use.focusIndex();
@@ -35,7 +41,7 @@ export const Posts = () => {
   const isDashboardPage = useShortcutStateSelector('dashboardPage');
 
   useEffect(() => {
-    const postIdsToSet = posts.map((p) => p.id);
+    const postIdsToSet = (posts.map((p) => p.id) ?? []) as string[];
     setPostIds(postIdsToSet);
   }, [posts.length]);
 
@@ -49,7 +55,7 @@ export const Posts = () => {
         title: `"Delete Post": ${focusedPost.title}?`,
         description: `Are you you sure you want to delete "${focusedPost.title}"?`,
         onConfirm: async () => {
-          await deleteOnePost(focusedPost.id);
+          deleteOnePost(focusedPost?.id as string);
           decrementFocusIndex();
         },
       });
@@ -112,7 +118,7 @@ export const Posts = () => {
         return (
           <ContextMenu key={post.id}>
             <ContextMenu.Trigger>
-              <Post
+              <PostComponent
                 post={post}
                 isFocused={isFocused}
                 setFocusCurrentIndex={() => setFocusIndex(index)}
@@ -134,19 +140,20 @@ export const Posts = () => {
   );
 };
 
-const Post = ({
+const PostComponent = ({
   post,
   isFocused,
   setFocusCurrentIndex,
 }: {
-  post: typeof Post;
+  post: TPost;
   isFocused?: boolean;
   setFocusCurrentIndex: () => void;
 }) => {
   const focusRef = useRef(null);
+
   useEffect(() => {
-    if (isFocused) {
-      focusRef.current.focus();
+    if (isFocused && Boolean(focusRef?.current)) {
+      focusRef?.current.focus();
     }
   }, [isFocused]);
 

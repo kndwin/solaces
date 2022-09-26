@@ -6,7 +6,7 @@ export const Text = styled('p', {
   variants: {},
 });
 
-export const Code = styled('pre', {
+export const Code = styled('code', {
   base: 'text-stone-100 leading-snug',
   variants: {},
 });

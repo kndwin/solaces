@@ -29,7 +29,7 @@ export function ErrorFallback({
         )}
       >
         <Text className="text-lg font-bold">Something went wrong</Text>
-        <Code className="p-2">{error.message}</Code>
+        <Code className="p-2 break-words max-w-[60em]">{error.message}</Code>
         <Button onClick={resetErrorBoundary}>Try again</Button>
       </Box>
     </Box>

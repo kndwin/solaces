@@ -3,7 +3,6 @@ import LokiJSAdapter from '@nozbe/watermelondb/adapters/lokijs';
 import { schema, Post, TableName } from './schema';
 import { useObservable } from 'rxjs-hooks';
 import * as z from 'zod';
-import { z as zGlobal } from 'zod';
 
 const adapter = new LokiJSAdapter({
   schema,

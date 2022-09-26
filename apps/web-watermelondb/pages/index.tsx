@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode } from 'react';
+import { useEffect, ReactNode } from 'react';
 import {
   Text,
   TextArea,
@@ -25,19 +25,29 @@ import {
   useShortcutStateSelector,
 } from '@solaces/features/shortcuts';
 import { useKeyboardPress } from '@solaces/react/hooks';
-import { WysiwygEditor } from '@solaces/features/wysiwyg-editor';
 import clsx from 'clsx';
 import {
   createOnePost,
   useRxPosts,
   TCreateOnePost,
+  deleteOnePost,
   createOnePostZodSchema,
 } from 'apps/web-watermelondb/db';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Posts } from 'apps/web-watermelondb/features/posts';
 import { useMutation } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
+import { WysiwygEditor } from '@solaces/features/wysiwyg-editor';
+import { PostsComponent } from '@solaces/features/post';
+
+/* TODO(knd): Benchmark if this is worth it
+import dynamic from 'next/dynamic';
+const WysiwygEditor = dynamic(
+  () =>
+    import('@solaces/features/wysiwyg-editor').then((mod) => mod.WysiwygEditor),
+  { ssr: false }
+);
+ * */
 
 const t = {
   title: 'Solace',
@@ -76,7 +86,9 @@ export default function Index() {
 
       <Dashboard.Main>
         {posts.length === 0 && <CreatePostInfo />}
-        {posts.length > 0 && <Posts />}
+        {posts.length > 0 && (
+          <PostsComponent posts={posts} deleteOnePost={deleteOnePost} />
+        )}
       </Dashboard.Main>
 
       <DialogCreateNewEntry />

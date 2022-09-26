@@ -9,12 +9,8 @@ import {
   useShortcutStateSelector,
 } from '@solaces/features/shortcuts';
 import { useKeyboardPress } from '@solaces/react/hooks';
-import { Layout } from 'apps/web-watermelondb/pages';
-import {
-  useRxPost,
-  updateOnePost,
-  TUpdateOnePost,
-} from 'apps/web-watermelondb/db';
+import { Layout } from 'apps/web-dixiejs/pages';
+import { useRxPost, updateOnePost, TUpdateOnePost } from 'apps/web-dixiejs/db';
 import { usePostStore } from '@solaces/features/post';
 import clsx from 'clsx';
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
